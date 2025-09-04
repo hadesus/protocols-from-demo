@@ -10,11 +10,15 @@ export default defineConfig({
     alias: {
       "@": path.resolve(__dirname, "./src"),
     },
-    extensions: ['.js', '.jsx', '.ts', '.tsx', '.json', '.mjs']
+    extensions: ['.mjs', '.js', '.jsx', '.ts', '.tsx', '.json']
   },
   build: {
     rollupOptions: {
       external: [],
     },
   },
+  server: {
+    host: true,
+    port: 5173
+  }
 })
