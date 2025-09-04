@@ -9,15 +9,8 @@ RUN npm install -g pnpm
 # Копируем все файлы проекта
 COPY . .
 
-# Устанавливаем зависимости
-RUN pnpm install --frozen-lockfile
-
-# Проверяем структуру файлов
-RUN ls -la src/
-RUN ls -la src/lib/ || echo "lib directory not found"
-RUN cat src/lib/utils.js || echo "utils.js not found"
-
 # Собираем приложение
+RUN pnpm install --frozen-lockfile
 RUN pnpm run build
 
 # Этап production
