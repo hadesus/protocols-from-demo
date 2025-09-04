@@ -12,8 +12,13 @@ COPY package.json pnpm-lock.yaml ./
 # Устанавливаем зависимости
 RUN pnpm install --frozen-lockfile
 
+# Копируем конфигурационные файлы
+COPY vite.config.js jsconfig.json components.json ./
+
 # Копируем исходный код
-COPY . .
+COPY src/ ./src/
+COPY public/ ./public/
+COPY index.html ./
 
 # Собираем приложение
 RUN pnpm run build
