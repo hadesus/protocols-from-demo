@@ -12,9 +12,6 @@ COPY . .
 # Устанавливаем зависимости
 RUN pnpm install --frozen-lockfile
 
-# Проверяем структуру файлов
-RUN ls -la src/lib/
-
 # Собираем приложение
 RUN pnpm run build
 
