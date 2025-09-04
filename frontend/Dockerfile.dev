@@ -1,0 +1,22 @@
+FROM node:20-alpine
+
+WORKDIR /app
+
+# Устанавливаем pnpm
+RUN npm install -g pnpm
+
+# Копируем файлы зависимостей
+COPY package.json pnpm-lock.yaml ./
+
+# Устанавливаем зависимости
+RUN pnpm install --frozen-lockfile
+
+# Копируем исходный код
+COPY . .
+
+# Открываем порт
+EXPOSE 5173
+
+# Команда запуска в режиме разработки
+CMD ["pnpm", "run", "dev", "--host"]
+
